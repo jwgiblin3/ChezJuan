@@ -1,0 +1,38 @@
+<!--<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=777121849826944&autoLogAppEvents=1" nonce="hwGXo1FD"></script>
+
+<button type="button" class="btn btn-primary" (click)="closeModal()">
+    Launch demo modal
+  </button> 
+  
+
+  <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display': display}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Login with: </h5>
+          <button type="button" class="close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          For this action, you need to Login
+        </div>
+        <div class="modal-footer">
+          <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" (click)="signInWithFB()"></div>
+          <button type="button" class="btn btn-secondary" (click)="signInWithFB()">Cancel</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+-->
+<div>
+  <div>
+    <img [hidden]="isLoggedIn" (click)="signInWithFB()" class="img" src="https://scontent.fewr1-5.fna.fbcdn.net/v/t39.2365-6/17639236_1785253958471956_282550797298827264_n.png?_nc_cat=105&amp;ccb=2&amp;_nc_sid=ad8a9d&amp;_nc_ohc=LvWhE5kie-0AX_r-F1R&amp;_nc_ht=scontent.fewr1-5.fna&amp;oh=33a7a3be376e51eb187eebbf91a93c75&amp;oe=60330796" width="300" alt="">
+
+    <img [hidden]="isLoggedIn" (click)="signInWithGoogle()" class="img" src="/assets/images/buttons/google.png" width="230" alt="">
+  </div>
+  <!--<button [hidden]="isLoggedIn" type="button" class="btn btn-secondary" (click)="signInWithFB()">Login with Facebook</button> -->
+  <ng-content *ngIf="isLoggedIn" ></ng-content> 
+</div>

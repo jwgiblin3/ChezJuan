@@ -17,6 +17,7 @@ namespace ChezJuanWebAPI.Models
         public int Rating { get; set; }
         public int MadeIt { get; set; }
         public bool HasVideo { get; set; }
+        public string Video { get; set; }
         public IEnumerable<RecipeIngrediant> RecipeIngrediants { get; set; }
         public IEnumerable<string> Tags { get; set; }
         public IEnumerable<string> Steps { get; set; }

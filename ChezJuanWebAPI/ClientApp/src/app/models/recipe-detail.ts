@@ -8,6 +8,12 @@ export class RecipeDetail {
     recipeIngrediants: string[];
     steps: string[];
     tags: string[];
+    video: string;
+
+    get hasVideo(): boolean {
+        return (this.video && this.video.trim().length)>0? true:false;
+    }
+
 }
 
 export class Media {

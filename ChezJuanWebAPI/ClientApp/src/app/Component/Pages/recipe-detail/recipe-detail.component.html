@@ -25,9 +25,9 @@
         <!-- Content Start -->
         <article class="post-single">
           <div class="post-thumbnail">
-            <img src="assets/images/recipes/{{recipe.image}}" alt="post">
-            <div class="video-player-trigger">
-              <a href="https://www.youtube.com/watch?v=TKnufs85hXk" class="popup-youtube">
+            <img src="assets/images/recipes/{{recipe.image}}" alt="{{recipe.title}}">
+            <div [hidden]="!recipe.hasVideo" class="video-player-trigger">
+              <a href="{{recipe.video}}" class="popup-youtube">
                 <i class="fas fa-play"></i>
                 <div class="video-player-icons">
                   <i class="flaticon-pot"></i>
@@ -112,3 +112,11 @@
   </div>
 </div>
 <!-- Recipe End -->
+<script>
+  $(document).ready(function() {
+      $('.popup-youtube').magnificPopup({
+          delegate: 'a',
+          type:'video'
+      });
+  });  
+</script>

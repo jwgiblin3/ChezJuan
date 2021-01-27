@@ -30,6 +30,7 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeId = +this.route.snapshot.queryParams['recipeId'];
     http.get<RecipeDetail>(baseUrl + 'api/recipe/GetRecipe/' + this.recipeId).subscribe(result => {
       this.recipe = result;
+      console.log(this.recipe);
     }, error => console.error(error));
   }
 

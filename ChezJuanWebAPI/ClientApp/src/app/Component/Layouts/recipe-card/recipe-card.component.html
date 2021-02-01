@@ -1,25 +1,19 @@
 <div class="recipe recipe-list">
   <div class="recipe-thumbnail">
     <a routerLink="/recipe-detail">
-      <img src="assets/images/recipes/{{recipe.image}}" alt="Recipe">
+      <img src="assets/images/recipes/{{recipe.image}}" alt="Recipe" routerLink="/recipe" [queryParams]="{recipeId: recipe.id}" >
     </a>
   </div>
   <div class="recipe-body">
     <h5 class="recipe-title"> <a routerLink="/recipe" [queryParams]="{recipeId: recipe.id}" >{{recipe.title}}</a> </h5>
     <p class="recipe-text">{{recipe.description}}</p>
     <div class="recipe-meta">
-      <div class="recipe-difficulty">
-        <div class="recipe-difficulty-inner">
-          <span class="active"></span>
-          <span></span>
-          <span></span>
-        </div>
-        <span>{{recipe.difficulty}}</span>
+      <app-recipe-diffulty [difficulty]="recipe.difficulty"></app-recipe-diffulty>
+      
+      <div class="recipe-steps" data-toggle="tooltip" data-placement="top" title="{{recipe.steps}} Steps">
+        <span><i class="fas fa-concierge-bell"></i> {{recipe.steps}} Steps</span>
       </div>
-      <div class="recipe-steps">
-        <span><i class="fas fa-concierge-bell"></i> {{recipe.steps}}</span>
-      </div>
-      <div class="recipe-duration">
+      <div class="recipe-duration" >
         <span><i class="fas fa-stopwatch"></i> {{recipe.time}}</span>
       </div>
     </div>

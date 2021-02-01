@@ -1,41 +1,28 @@
-
 <!-- Subheader Start -->
-  <div class="subheader bg-cover dark-overlay dark-overlay-2" style="background-image: url('assets/images/chef_bg_pages.jpg')">
-    <div class="container">
-      <div class="subheader-inner">
-        <h1>Recommendations</h1>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Recommendations</li>
-          </ol>
-        </nav>
-      </div>
-    </div>
-  </div>
-  <!-- Subheader End -->
+<app-sub-header></app-sub-header>
+<!-- Subheader End -->
 
-  <!-- Blog Posts Start -->
-  <div class="section section-padding posts">
-    <div class="container">
+<!-- Blog Posts Start -->
+<div class="section section-padding posts">
+  <div class="container">
 
-      <div class="row">
-        <div class="col-lg-8">
+    <div class="row">
+      <div class="col-lg-8">
 
-          <div class="row">
-            <!-- Post Start -->
-            <div class="col-lg-6 col-md-6" *ngFor="let recommendation of recommendations; let i = index">
-              <app-prod-rec [recommendation]="recommendation"></app-prod-rec>
-            </div>
-            <!-- Post End -->
+        <div class="row">
+          <!-- Post Start -->
+          <div class="col-lg-6 col-md-6" *ngFor="let recommendation of recommendations; let i = index">
+            <app-prod-rec [recommendation]="recommendation"></app-prod-rec>
           </div>
-
+          <!-- Post End -->
         </div>
-        <!--<div class="col-lg-4">
+
+      </div>
+      <!--<div class="col-lg-4">
            <app-blog-sidebar></app-blog-sidebar> 
         </div> -->
-      </div>
-
     </div>
+
   </div>
-  <!-- Blog Posts End -->
+</div>
+<!-- Blog Posts End -->

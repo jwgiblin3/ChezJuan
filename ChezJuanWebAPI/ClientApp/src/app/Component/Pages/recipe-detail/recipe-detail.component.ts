@@ -30,7 +30,7 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeId = +this.route.snapshot.queryParams['recipeId'];
     http.get<RecipeDetail>(baseUrl + 'api/recipe/GetRecipe/' + this.recipeId).subscribe(result => {
       this.recipe = result;
-      console.log(this.recipe);
+      // console.log(this.recipe);
     }, error => console.error(error));
   }
 
@@ -49,12 +49,13 @@ export class RecipeDetailComponent implements OnInit {
       comment: this.comment
     }
 
-    this.dataservice.SaveRecipeComments(comment).subscribe(res =>
-      {
-        this.getComments();
-      },
-      (err)=> console.log(err)
-      );
+    this.dataservice.SaveRecipeComments(comment).subscribe(res => {
+      this.getComments();
+    },
+      (err) => console.log(err)
+    );
+
+    this.getComments();
   }
 
   getComments(): void {

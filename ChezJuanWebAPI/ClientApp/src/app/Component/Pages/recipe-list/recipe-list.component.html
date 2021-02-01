@@ -1,50 +1,37 @@
 <!-- Subheader Start -->
-  <div class="subheader bg-cover dark-overlay dark-overlay-2" style="background-image: url('assets/images/header/lobster2.jpg')">
-    <div class="container">
-      <div class="subheader-inner">
-        <h1>Recipes</h1>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a routerLink="/recipe-archive">Home</a></li>
-            <li class="breadcrumb-item"><a routerLink="/recipe-archive">Recipes</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Recipe</li>
-          </ol>
-        </nav>
-      </div>
-    </div>
-  </div>
-  <!-- Subheader End -->
+<app-sub-header ></app-sub-header>
+<!-- Subheader End -->
 
-  <!-- Recipes Start -->
-  <section class="section">
-    <div class="container">
+<!-- Recipes Start -->
+<section class="section">
+  <div class="container">
 
-      <div class="row">
-        <!-- Recipes Start -->
-        <div class="col-lg-8">
-          <app-recipe-card [recipe]="recipe"  *ngFor="let recipe of recipes; let i = index" ></app-recipe-card>
+    <div class="row">
+      <!-- Recipes Start -->
+      <div class="col-lg-8">
+        <app-recipe-card [recipe]="recipe" *ngFor="let recipe of recipes; let i = index"></app-recipe-card>
 
-          <!-- Pagination Start -->
-            <!--<ul class="pagination">
+        <!-- Pagination Start -->
+        <!--<ul class="pagination">
               <li class="page-item"><a class="page-link" routerLink="/recipe-archive">1</a></li>
               <li class="page-item active">
                 <a class="page-link" routerLink="/recipe-archive">2 <span class="sr-only">(current)</span></a>
               </li>
               <li class="page-item"><a class="page-link" routerLink="/recipe-archive">3</a></li>
             </ul>-->
-          <!-- Pagination End -->
-
-        </div>
-        <!-- Recipes End -->
-
-        <!-- Sidebar Start -->
-        <!--<div class="col-lg-4">
-          <app-recipe-sidebar></app-recipe-sidebar>
-        </div>-->
-        <!-- Sidebar End -->
+        <!-- Pagination End -->
 
       </div>
+      <!-- Recipes End -->
+
+      <!-- Sidebar Start -->
+      <!--<div class="col-lg-4">
+          <app-recipe-sidebar></app-recipe-sidebar>
+        </div>-->
+      <!-- Sidebar End -->
 
     </div>
-  </section>
-  <!-- Recipes End -->
+
+  </div>
+</section>
+<!-- Recipes End -->

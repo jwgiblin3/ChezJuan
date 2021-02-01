@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 import { Comment } from 'src/app/models/comments';
+import { Recommendation } from '../models/recommendations.model';
 
 
 @Injectable({
@@ -31,6 +32,7 @@ export class DataService implements OnInit, OnDestroy {
     ngOnInit(): void {
 
     }
+    
     ngOnDestroy(): void {
 
     }
@@ -42,5 +44,9 @@ export class DataService implements OnInit, OnDestroy {
     SaveRecipeComments(comment: Comment): Observable<any> {
         const url = this.apiPath + 'SaveRecipeComments'; 
         return this.http.post(url, comment, this.httpOptions);
+    }
+
+    getRecommendations(): Observable<Recommendation[]> {
+        return this.http.get<Recommendation[]>(this.apiPath + 'GetRecommendations');
     }
 }

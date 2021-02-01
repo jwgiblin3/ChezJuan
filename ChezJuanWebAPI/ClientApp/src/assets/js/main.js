@@ -92,7 +92,7 @@
   -------------------------------------------------------------------------------*/
   $('.popup-youtube').magnificPopup({
     type: 'iframe'
-  });
+  }).console.log('test');
   $('.popup-vimeo').magnificPopup({
     type: 'iframe'
   });

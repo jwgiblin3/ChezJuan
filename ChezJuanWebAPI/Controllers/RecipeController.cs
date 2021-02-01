@@ -45,6 +45,14 @@ namespace ChezJuanWebAPI.Controllers
         }
 
         [HttpGet]
+        [Route("GetRecommendations")]
+        public async Task<IActionResult> GetRecommendations()
+        {
+            var results = await repo.GetRecommendations();
+            return Ok(results);
+        }
+
+        [HttpGet]
         [Route("GetRecipeComments/{recipeId:int}")]
         public async Task<IActionResult> GetRecipeComments(int recipeId)
         {

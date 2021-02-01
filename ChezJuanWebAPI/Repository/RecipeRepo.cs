@@ -15,6 +15,8 @@ namespace ChezJuanWebAPI
         Task<IEnumerable<RecipeListtItem>> GetRecipesAll();
         Task<Recipe> GetRecipeById(int recipeId);
         Task<IEnumerable<RecipeCategory>> GetRecipeCatagories();
+        Task<IEnumerable<Recommendations>> GetRecommendations();
+        
         Task SaveComments(Comments content);
         Task<IEnumerable<Comments>> GetComments(int recipeId);
     }
@@ -105,6 +107,20 @@ namespace ChezJuanWebAPI
             return content;
         }
 
+        public async Task<IEnumerable<Recommendations>> GetRecommendations()
+        {
+            IEnumerable<Recommendations> content;
+            using (var connection = sqlProvider.GetDbConnection())
+            {
+                var results = connection.QueryMultipleAsync("Recommendations_Get",
+                    null, commandTimeout: 60,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                content = await results.ReadAsync<Recommendations>();
+            }
+
+            return content;
+        }
         public  Task SaveComments(Comments content)
         {
 

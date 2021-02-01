@@ -26,6 +26,8 @@ import {
 } from 'angularx-social-login';
 import { LoginComponent } from './Component/Layouts/login/login.component';
 import { CommentsComponent } from './Component/Layouts/comments/comments.component';
+import { SubHeaderComponent } from './Component/Layouts/sub-header/sub-header.component';
+import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recipe-difficulty.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { CommentsComponent } from './Component/Layouts/comments/comments.compone
     RecipeCardComponent,
     PreloaderComponent,
     LoginComponent,
-    CommentsComponent
+    CommentsComponent,
+    SubHeaderComponent,
+    DifficultyComponent
 
   ],
   imports: [
@@ -54,10 +58,10 @@ import { CommentsComponent } from './Component/Layouts/comments/comments.compone
     SocialLoginModule,
     RouterModule.forRoot([
     { path: '', component: HomepageComponent, pathMatch: 'full' },
-    { path: 'contactus', component: ContactusComponent },
-    { path: 'recommendations', component: RecommendationsComponent },
-    { path: 'recipes', component: RecipeListComponent },
-    { path: 'recipe', component: RecipeDetailComponent },
+    { path: 'contactus', component: ContactusComponent, data: { image: 'mimi.jpg', section: 'Contact Us'}  },
+    { path: 'recommendations', component: RecommendationsComponent, data: { image: 'eh.jpg', section: 'Recommendations'}  },
+    { path: 'recipes', component: RecipeListComponent, data: { image: 'lobster2.jpg', section: 'Recipes'} },
+    { path: 'recipe', component: RecipeDetailComponent, data: { image: 'eh.jpg', section: 'Recipes'}  },
 
 ], { relativeLinkResolution: 'legacy' })
   ],

@@ -1,0 +1,8 @@
+<div class="recipe-difficulty"  data-toggle="tooltip" data-placement="top" title="Difficulty">
+  <div class="recipe-difficulty-inner">
+    <span [ngClass]="{'active' : difficulty>=1}"></span>
+    <span [ngClass]="{'active' : difficulty>=2}"></span>
+    <span [ngClass]="{'active' : difficulty>=3}"></span>
+  </div>
+  <span>{{difficultyName}}</span>
+</div>

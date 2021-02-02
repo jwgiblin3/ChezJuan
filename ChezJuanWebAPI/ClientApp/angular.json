@@ -49,6 +49,7 @@
               "src/assets/js/plugins/jquery.countdown.min.js",
               "src/assets/js/plugins/isotope.pkgd.min.js",
               "src/assets/js/plugins/slick.min.js",
+              "src/assets/js/main.js",
               "src/assets/js/main.js"
             ],
             "aot": true

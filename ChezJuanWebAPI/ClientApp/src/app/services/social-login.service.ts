@@ -14,12 +14,16 @@ export class SocialloginService implements OnInit, OnDestroy{
     loggedIn: boolean;
     IsLoggedIn$: Observable<boolean>;
     private IsLoggedIn: BehaviorSubject<boolean>;
+    ShowLogin$: Observable<boolean>;
+    private ShowLogin: BehaviorSubject<boolean>;
 
     constructor(
         private authService: SocialAuthService
     ) {
         this.IsLoggedIn = new BehaviorSubject<boolean>(false);
         this.IsLoggedIn$ = this.IsLoggedIn.asObservable();
+        this.ShowLogin = new BehaviorSubject<boolean>(false);
+        this.ShowLogin$ = this.ShowLogin.asObservable();
     }
     ngOnDestroy(): void {
         
@@ -35,5 +39,9 @@ export class SocialloginService implements OnInit, OnDestroy{
 
     signOut(): void {
         this.authService.signOut();
+    }
+
+    Login(): void {
+        this.ShowLogin.next(true);
     }
 }

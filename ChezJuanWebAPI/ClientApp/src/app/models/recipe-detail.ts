@@ -5,6 +5,7 @@ export class RecipeDetail {
     image: string;
     time: string;
     serves: number;
+    rating: number;
     recipeIngrediants: string[];
     steps: string[];
     tags: string[];
@@ -34,6 +35,7 @@ export class RecipeListItem {
     time: string;
     serves: number;
     difficulty: number;
+    rating: number;
     steps:number
     
 }

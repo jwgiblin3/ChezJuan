@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   isLoggedIn: boolean = false;
   display = 'none';
+  showLogin = false;
 
   constructor(
     private authService: SocialAuthService,
@@ -20,16 +21,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.loginservice.IsLoggedIn$.subscribe(IsLoggedIn => {
+    /*this.loginservice.IsLoggedIn$.subscribe(IsLoggedIn => {
       this.setLoginDisplay(IsLoggedIn);
       this.isLoggedIn = IsLoggedIn;
     }
     );
+    */
+   
+    this.loginservice.ShowLogin$.subscribe((show) => {
+      this.showLogin = show;
+      this.setLoginDisplay(show);
+    });
 
     this.authService.authState.subscribe((user) => {
       this.isLoggedIn = (user != null);
     });
   }
+
   openModal() {
     this.display = 'block';
   }

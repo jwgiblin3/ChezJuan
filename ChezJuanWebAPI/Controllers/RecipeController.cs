@@ -67,5 +67,13 @@ namespace ChezJuanWebAPI.Controllers
             await repo.SaveComments(comment);
             return Ok("Saved");
         }
+
+        [HttpPost]
+        [Route("SaveRating")]
+        public async Task<IActionResult> SaveRating([FromBody] Ratings comment)
+        {
+            await repo.SaveRating(comment);
+            return Ok("Saved");
+        }
     }
 }

@@ -16,9 +16,10 @@ namespace ChezJuanWebAPI
         Task<Recipe> GetRecipeById(int recipeId);
         Task<IEnumerable<RecipeCategory>> GetRecipeCatagories();
         Task<IEnumerable<Recommendations>> GetRecommendations();
-        
-        Task SaveComments(Comments content);
         Task<IEnumerable<Comments>> GetComments(int recipeId);
+
+        Task SaveComments(Comments content);
+        Task SaveRating(Ratings content);
     }
 
     public class RecipeRepo: IRecipeRepo
@@ -134,6 +135,26 @@ namespace ChezJuanWebAPI
                         @Email = content.Email,
                         @Image = content.Image,
                         @Comment = content.Comment,
+
+                    }, commandTimeout: 60,
+                    commandType: CommandType.StoredProcedure).Result;
+
+            }
+
+            return Task.CompletedTask;
+        }
+
+        public Task SaveRating(Ratings content)
+        {
+
+            using (var connection = sqlProvider.GetDbConnection())
+            {
+                var results = connection.QueryMultipleAsync("Recipe_SaveRate",
+                    new
+                    {
+                        @RecipeId = content.RecipeId,
+                        @Rating = content.Rating,
+                        @User = content.User
 
                     }, commandTimeout: 60,
                     commandType: CommandType.StoredProcedure).Result;

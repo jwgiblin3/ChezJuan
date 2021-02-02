@@ -1,3 +1,6 @@
+
+import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -48,10 +51,11 @@ import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recip
     LoginComponent,
     CommentsComponent,
     SubHeaderComponent,
-    DifficultyComponent
+    DifficultyComponent,
 
   ],
   imports: [
+    NgbModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
@@ -60,7 +64,7 @@ import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recip
     { path: '', component: HomepageComponent, pathMatch: 'full' },
     { path: 'contactus', component: ContactusComponent, data: { image: 'mimi.jpg', section: 'Contact Us'}  },
     { path: 'recommendations', component: RecommendationsComponent, data: { image: 'eh.jpg', section: 'Recommendations'}  },
-    { path: 'recipes', component: RecipeListComponent, data: { image: 'lobster2.jpg', section: 'Recipes'} },
+    { path: 'recipes', component: RecipeListComponent, data: { image: 'beef.jpg', section: 'Recipes'} },
     { path: 'recipe', component: RecipeDetailComponent, data: { image: 'eh.jpg', section: 'Recipes'}  },
 
 ], { relativeLinkResolution: 'legacy' })

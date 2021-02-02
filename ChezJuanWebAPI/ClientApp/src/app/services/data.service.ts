@@ -4,6 +4,8 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 import { Comment } from 'src/app/models/comments';
 import { Recommendation } from '../models/recommendations.model';
+import { RecipeDetail } from '../models/recipe-detail';
+import { Rating } from '../models/rating';
 
 
 @Injectable({
@@ -41,12 +43,23 @@ export class DataService implements OnInit, OnDestroy {
         return this.http.get<Comment[]>(this.apiPath + 'GetRecipeComments/' + recipeId);
     }
 
+
+
+    getRecommendations(): Observable<Recommendation[]> {
+        return this.http.get<Recommendation[]>(this.apiPath + 'GetRecommendations');
+    }
+
+    getRecipe(recipdeId: number): Observable<RecipeDetail> {
+        return this.http.get<RecipeDetail>(this.apiPath + 'GetRecipe/' + recipdeId);
+    }
+
     SaveRecipeComments(comment: Comment): Observable<any> {
         const url = this.apiPath + 'SaveRecipeComments'; 
         return this.http.post(url, comment, this.httpOptions);
     }
-
-    getRecommendations(): Observable<Recommendation[]> {
-        return this.http.get<Recommendation[]>(this.apiPath + 'GetRecommendations');
+    
+    saveRecipeRating(content: Rating): Observable<any> {
+        const url = this.apiPath + 'SaveRating'; 
+        return this.http.post(url, content, this.httpOptions);
     }
 }

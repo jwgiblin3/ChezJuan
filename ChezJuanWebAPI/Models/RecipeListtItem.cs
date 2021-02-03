@@ -14,6 +14,7 @@ namespace ChezJuanWebAPI.Models
         public string Time { get; set; }
         public int Difficulty { get; set; }
         public int Rating { get; set; }
+        public int RatingCount { get; set; }
         public int Steps { get; set; }
     }
 }

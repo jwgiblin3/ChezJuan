@@ -6,6 +6,7 @@ export class RecipeDetail {
     time: string;
     serves: number;
     rating: number;
+    ratingCount: number;
     recipeIngrediants: string[];
     steps: string[];
     tags: string[];
@@ -36,6 +37,7 @@ export class RecipeListItem {
     serves: number;
     difficulty: number;
     rating: number;
+    ratingCount: number;
     steps:number
     
 }

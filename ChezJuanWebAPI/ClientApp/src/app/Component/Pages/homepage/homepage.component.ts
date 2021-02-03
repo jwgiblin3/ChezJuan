@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { RecipeCategory } from 'src/app/models/recpe-category';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-homepage',
@@ -11,13 +12,19 @@ export class HomepageComponent implements OnInit {
 
   categories: RecipeCategory[]
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<RecipeCategory[]>(baseUrl + 'api/recipe/getRecipeCategory').subscribe(result => {
-      this.categories = result;
-    }, error => console.error(error));
+  constructor( 
+    private dataservice: DataService) {
+
   }
 
   ngOnInit(): void {
+    this.dataservice.getCatogies().subscribe( results =>
+      {
+        this.categories = results;
+      },
+      err => console.log(err)
+
+      );
   }
 
 }

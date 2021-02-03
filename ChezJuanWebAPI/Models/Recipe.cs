@@ -15,6 +15,7 @@ namespace ChezJuanWebAPI.Models
         public int Servings { get; set; }
         public int Difficulty { get; set; }
         public int Rating { get; set; }
+        public int RatingCount { get; set; }
         public int MadeIt { get; set; }
         public bool HasVideo { get; set; }
         public string Video { get; set; }

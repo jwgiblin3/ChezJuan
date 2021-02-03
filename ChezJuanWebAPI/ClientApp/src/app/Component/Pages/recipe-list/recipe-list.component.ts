@@ -12,6 +12,8 @@ import { RecipeListItem } from 'src/app/models/recipe-detail';
 export class RecipeListComponent implements OnInit {
 
   recipes: RecipeListItem[];
+  
+  //difficulty =  ['Ameteur', 'Home Chef', 'Chef'];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<RecipeListItem[]>(baseUrl + 'api/recipe/getRecipeAll').subscribe(result => {

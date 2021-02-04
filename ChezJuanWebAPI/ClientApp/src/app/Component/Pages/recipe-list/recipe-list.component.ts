@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { RecipeListItem } from 'src/app/models/recipe-detail';
+// import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe-list',
@@ -13,7 +14,7 @@ export class RecipeListComponent implements OnInit {
 
   recipes: RecipeListItem[];
   
-  //difficulty =  ['Ameteur', 'Home Chef', 'Chef'];
+  difficulty =  ['Ameteur', 'Home Chef', 'Chef'];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<RecipeListItem[]>(baseUrl + 'api/recipe/getRecipeAll').subscribe(result => {

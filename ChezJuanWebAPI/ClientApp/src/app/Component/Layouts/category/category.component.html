@@ -1,5 +1,5 @@
 
-  <a routerLink="/recipes" [queryParams]="{category: category.name}" class="ct-category">
+  <a [routerLink]="['/recipes', category.name]" class="ct-category">
     <div class="ct-category-img">
       <img src="assets/images/categories/{{category.image}}" alt="category">
       <span>{{category.recipeCount}} Recipes</span>

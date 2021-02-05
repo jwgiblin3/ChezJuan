@@ -32,6 +32,7 @@ import { CommentsComponent } from './Component/Layouts/comments/comments.compone
 import { SubHeaderComponent } from './Component/Layouts/sub-header/sub-header.component';
 import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recipe-difficulty.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,7 @@ import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recip
       { path: 'contactus', component: ContactusComponent, data: { image: 'mimi.jpg', section: 'Contact Us' } },
       { path: 'recommendations', component: RecommendationsComponent, data: { image: 'eh.jpg', section: 'Recommendations' } },
       { path: 'recipes', component: RecipeListComponent, data: { image: 'beef.jpg', section: 'Recipes' } },
-      { path: 'recipe', component: RecipeDetailComponent, data: { image: 'eh.jpg', section: 'Recipes' } },
+      { path: 'recipe/:id', component: RecipeDetailComponent, data: { image: 'eh.jpg', section: 'Recipes' } },
 
     ], { relativeLinkResolution: 'legacy' })
   ],

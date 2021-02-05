@@ -5,7 +5,7 @@
     </a>
   </div>
   <div class="recipe-body">
-    <h5 class="recipe-title"> <a routerLink="/recipe" [queryParams]="{recipeId: recipe.id}" >{{recipe.title}}</a> </h5>
+    <h5 class="recipe-title"> <a [routerLink]="['/recipe', recipe.id]" >{{recipe.title}}</a> </h5>
     <ngb-rating [(rate)]="recipe.rating"  [readonly]="true" [max]="5"></ngb-rating> ({{recipe.ratingCount}})
     <p class="recipe-text">{{recipe.description}}</p>
     <div class="recipe-meta">

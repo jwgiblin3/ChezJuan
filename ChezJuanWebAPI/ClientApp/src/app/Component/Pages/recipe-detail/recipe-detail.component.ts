@@ -31,7 +31,7 @@ export class RecipeDetailComponent implements OnInit {
     private dataservice: DataService
 
   ) {
-    this.recipeId = +this.route.snapshot.queryParams['recipeId'];
+    this.recipeId = +this.route.snapshot.params['id'];
   }
 
   ngOnInit(): void {

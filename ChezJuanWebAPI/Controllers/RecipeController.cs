@@ -1,4 +1,5 @@
 ﻿using ChezJuanWebAPI.Models;
+using ChezJuanWebAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System;
@@ -13,17 +14,19 @@ namespace ChezJuanWebAPI.Controllers
     [Route("api/[controller]")]
     public class RecipeController : ControllerBase
     {
-        IRecipeRepo repo;
-        public RecipeController(IRecipeRepo _repo)
+        IRecipeRepo recipeRepo;
+        IUserRepo userRepo;
+        public RecipeController(IRecipeRepo _recipeRepo, IUserRepo _userRepo)
         {
-            repo = _repo;
+            recipeRepo = _recipeRepo;
+            userRepo = _userRepo;
         }
 
         [HttpGet]
         [Route("GetRecipeAll")]
         public async Task<IActionResult> GetRecipeAll()
         {
-            var results = await repo.GetRecipesAll();
+            var results = await recipeRepo.GetRecipesAll();
             return Ok(results);
         }
 
@@ -32,7 +35,7 @@ namespace ChezJuanWebAPI.Controllers
         [Route("GetRecipe/{recipeId:int}")]
         public async Task<IActionResult> GetRecipe(int recipeId)
         {
-            var results = await repo.GetRecipeById(recipeId);
+            var results = await recipeRepo.GetRecipeById(recipeId);
             return Ok(results);
         }
 
@@ -40,7 +43,7 @@ namespace ChezJuanWebAPI.Controllers
         [Route("GetRecipeCategory")]
         public async Task<IActionResult> GetRecipeCategory()
         {
-            var results = await repo.GetRecipeCatagories();
+            var results = await recipeRepo.GetRecipeCatagories();
             return Ok(results);
         }
 
@@ -48,7 +51,7 @@ namespace ChezJuanWebAPI.Controllers
         [Route("GetRecommendations")]
         public async Task<IActionResult> GetRecommendations()
         {
-            var results = await repo.GetRecommendations();
+            var results = await recipeRepo.GetRecommendations();
             return Ok(results);
         }
 
@@ -56,7 +59,7 @@ namespace ChezJuanWebAPI.Controllers
         [Route("GetRecipeComments/{recipeId:int}")]
         public async Task<IActionResult> GetRecipeComments(int recipeId)
         {
-            var results = await repo.GetComments(recipeId);
+            var results = await recipeRepo.GetComments(recipeId);
             return Ok(results);
         }
 
@@ -64,7 +67,7 @@ namespace ChezJuanWebAPI.Controllers
         [Route("SaveRecipeComments")]
         public async Task<IActionResult> SaveRecipeComments([FromBody] Comments comment)
         {
-            await repo.SaveComments(comment);
+            await recipeRepo.SaveComments(comment);
             return Ok("Saved");
         }
 
@@ -72,8 +75,27 @@ namespace ChezJuanWebAPI.Controllers
         [Route("SaveRating")]
         public async Task<IActionResult> SaveRating([FromBody] Ratings comment)
         {
-            await repo.SaveRating(comment);
+            await recipeRepo.SaveRating(comment);
             return Ok("Saved");
+        }
+
+        #region "User"
+        #endregion
+        [HttpPost]
+        [Route("SaveUser")]
+        public async Task<IActionResult> SaveUser([FromBody] ResponseUser content)
+        {
+            var results = await userRepo.SaveUser(content);
+            return Ok(results);
+        }
+
+        [HttpGet]
+        [Route("GetUser/{id}")]
+        public async Task<IActionResult> GetUser(string id)
+        {
+            var results = await userRepo.GetUserById(id);
+  
+            return Ok(results);
         }
     }
 }

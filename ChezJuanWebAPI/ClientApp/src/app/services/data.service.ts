@@ -7,6 +7,7 @@ import { Recommendation } from '../models/recommendations.model';
 import { RecipeDetail } from '../models/recipe-detail';
 import { Rating } from '../models/rating';
 import { RecipeCategory } from '../models/recpe-category';
+import { User } from '../models/app-context.model';
 
 
 @Injectable({
@@ -65,7 +66,18 @@ export class DataService implements OnInit, OnDestroy {
     }
 
     getCatogies(): Observable<RecipeCategory[]> {
-        const url = this.apiPath + 'GetRecipeCatagories'; 
+        const url = this.apiPath + 'GetRecipeCategory'; 
         return this.http.get<RecipeCategory[]>(url, this.httpOptions);
     }
+    // User
+    saveUser(content: User): Observable<any> {
+        const url = this.apiPath + 'SaveUser'; 
+        return this.http.post(url, content, this.httpOptions);
+    }
+
+    getUser(id: string): Observable<User> {
+        return this.http.get<User>(this.apiPath + 'GetUser/' + id);
+    }
+
+
 }

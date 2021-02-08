@@ -23,7 +23,7 @@
   <nav class="navbar">
     <div class="container-fluid">
       <!-- Logo -->
-      <a class="navbar-brand" routerLink="/"> <img src="/assets/images/ChezJuan.Logo.PNG" alt="logo"> </a>
+      <a class="navbar-brand" routerLink="/"> <img src="/assets/images/ChefJuan.logo.jpg" alt="logo"> </a>
       <!-- Menu -->
       <ul class="navbar-nav">
         <li class="menu-item menu-item-has-children">
@@ -44,11 +44,11 @@
               <div ngbDropdown class="d-inline-block">
                 <img ngbDropdownToggle width="40" Hwight="40" src="/assets/images/icons/user3.jpg">
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button ngbDropdownItem [hidden]="!loggedIn"><div><img src="{{ user?.photoUrl }}" alt="User Photo"
-                      width="20" Hwight="20"></div>{{ user?.name }}</button>
-                  <button ngbDropdownItem [hidden]="loggedIn" (click)="Login()"><img [hidden]="loggedIn"
+                  <button ngbDropdownItem [hidden]="!appContext.isLoggedIn"><div><img src="{{ appContext.user?.imageUrl }}" alt="User Photo"
+                      width="20" Hwight="20"></div>{{ appContext.user?.name }}</button>
+                  <button ngbDropdownItem [hidden]="appContext.isLoggedIn" (click)="Login()"><img [hidden]="appContext.isLoggedIn"
                       src="/assets/images/icons/logout.png" width="20" Hwight="20"> Login</button>
-                  <button ngbDropdownItem [hidden]="!loggedIn"(click)="logout()"><img src="/assets/images/icons/logout.png" width="20"
+                  <button ngbDropdownItem [hidden]="!appContext.isLoggedIn"(click)="logout()"><img src="/assets/images/icons/logout.png" width="20"
                       Hwight="20"> Logout</button>
                 </div>
               </div>

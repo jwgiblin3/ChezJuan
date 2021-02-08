@@ -1,4 +1,5 @@
 
+import { CookieService } from 'ngx-cookie-service';
 import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
@@ -71,7 +72,9 @@ import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recip
     ], { relativeLinkResolution: 'legacy' })
   ],
   providers: [
+    CookieService,
     {
+      
       provide: 'SocialAuthServiceConfig',
       useValue: {
         autoLogin: false,

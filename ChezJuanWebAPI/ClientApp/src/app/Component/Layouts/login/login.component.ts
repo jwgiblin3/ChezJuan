@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { SocialloginService } from 'src/app/services/social-login.service';
+import { AppContextService } from 'src/app/services/app-context.service';
 
 @Component({
   selector: 'app-login',
@@ -13,29 +14,26 @@ export class LoginComponent implements OnInit {
   isLoggedIn: boolean = false;
   display = 'none';
   showLogin = false;
-
+  user: SocialUser;
+  
   constructor(
     private authService: SocialAuthService,
-    private loginservice: SocialloginService
+    private appContext: AppContextService
   ) { }
 
   ngOnInit(): void {
-    
-    /*this.loginservice.IsLoggedIn$.subscribe(IsLoggedIn => {
-      this.setLoginDisplay(IsLoggedIn);
-      this.isLoggedIn = IsLoggedIn;
-    }
-    );
-    */
    
-    this.loginservice.ShowLogin$.subscribe((show) => {
+    this.appContext.ShowLogin$.subscribe((show) => {
       this.showLogin = show;
       this.setLoginDisplay(show);
     });
 
+    /*
     this.authService.authState.subscribe((user) => {
       this.isLoggedIn = (user != null);
+      this.user = user;
     });
+    */
   }
 
   openModal() {
@@ -56,7 +54,6 @@ export class LoginComponent implements OnInit {
 
 
   signInWithGoogle(): void {
-    console.log(this.loginservice.loggedIn);
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.display = 'none';
   }

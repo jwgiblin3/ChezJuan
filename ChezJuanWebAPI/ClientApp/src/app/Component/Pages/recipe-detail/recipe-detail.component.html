@@ -30,7 +30,7 @@
             <a *ngFor="let tag of recipe.tags" routerLink="/recipe-detail">{{tag}}</a>
           </div>
           <h2 class="title">{{recipe.title}}</h2>
-          <ngb-rating [(rate)]="recipe.rating"  [max]="5" (rateChange)="submitRate($event)" [readonly]="!isLoggedIn" data-toggle="tooltip" data-placement="bottom" title="Login to rate"></ngb-rating> ({{recipe.ratingCount}})
+          <ngb-rating [(rate)]="recipe.rating"  [max]="5" (rateChange)="submitRate($event)" [readonly]="!appContext.isLoggedIn" data-toggle="tooltip" data-placement="bottom" title="Login to rate"></ngb-rating> ({{recipe.ratingCount}})
           <div class="post-meta">
             <!--<ul class="list-inline list-inline-xxs offset-top-15">
               <li><span class="icon icon-xs mdi mdi-star text-primary text-middle"></span></li>
@@ -90,8 +90,6 @@
               <button type="button" class="btn-custom primary" name="button" (click)="addComment()">Post
                 comment</button>
             </app-login>
-            <!--<button type="button" class="btn-custom primary" (click)="signInWithGoogle()" name="button">Google</button>
-            <button type="button" class="btn-custom primary" (click)="signInWithFB()" name="button">Facebook</button> -->
           </form>
         </div>
         <!-- Comments End -->

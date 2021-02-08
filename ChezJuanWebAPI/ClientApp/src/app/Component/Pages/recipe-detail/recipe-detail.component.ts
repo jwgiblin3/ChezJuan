@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { SocialAuthService } from 'angularx-social-login';
 import { RecipeDetail } from 'src/app/models/recipe-detail';
 import { DataService } from 'src/app/services/data.service';
-import { SocialloginService } from 'src/app/services/social-login.service';
 import { Comment } from 'src/app/models/comments';
 import { Rating } from 'src/app/models/rating';
+import { AppContextService } from 'src/app/services/app-context.service';
+import { AppContext, User as AppUser } from 'src/app/models/app-context.model';
 
 //import * as data from '../../../../assets/data/recipes.json';
 declare var $: any;
@@ -21,13 +22,13 @@ export class RecipeDetailComponent implements OnInit {
   recipe: RecipeDetail;
   recipeId: number;
   comment: string;
-  isLoggedIn = false;
+  appContext: AppContext;
   comments: Comment[] = [];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string,
     private route: ActivatedRoute,
     private authService: SocialAuthService,
-    private loginservice: SocialloginService,
+    private appContextService: AppContextService,
     private dataservice: DataService
 
   ) {
@@ -40,13 +41,9 @@ export class RecipeDetailComponent implements OnInit {
       // console.log(this.recipe);
     }, error => console.error(error));
 
-    this.authService.authState.subscribe((user) => {
-      this.isLoggedIn = (user != null);
-      if (this.isLoggedIn) {
-        $('[rel=tooltip]').tooltip('disable')
-      } else {
-        $('[rel=tooltip]').tooltip('enable')
-      }
+    this.appContextService.appContext$.subscribe((appContext) => {
+      this.appContext = appContext;
+      this
     });
 
     this.getComments();
@@ -57,9 +54,9 @@ export class RecipeDetailComponent implements OnInit {
     let comment: Comment =
     {
       recipeId: this.recipeId,
-      name: this.loginservice.user.name,
-      email: this.loginservice.user.email,
-      image: this.loginservice.user.photoUrl,
+      name: this.appContext.user.name,
+      email: this.appContext.user.email,
+      image: this.appContext.user.imageUrl,
       comment: this.comment
     }
 
@@ -76,7 +73,7 @@ export class RecipeDetailComponent implements OnInit {
     let content: Rating =
     {
       recipeId: this.recipeId,
-      user: this.loginservice.user.email,
+      user: this.appContext.user.email,
       rating: rating
     }
 

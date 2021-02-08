@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import { AppContextService } from './services/app-context.service';
 
 declare var $: any;
 
@@ -21,12 +22,15 @@ export class AppComponent implements OnInit {
   location: any;
   routerSubscription: any;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private appContext: AppContextService) {
   }
 
 
   ngOnInit() {
     this.recallJsFuntions();
+    this.appContext.getUser();
   }
   recallJsFuntions() {
     this.router.events

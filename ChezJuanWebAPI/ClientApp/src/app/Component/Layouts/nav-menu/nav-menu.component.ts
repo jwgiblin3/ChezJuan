@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SocialAuthService, SocialUser } from 'angularx-social-login';
-import { SocialloginService } from 'src/app/services/social-login.service';
+import { User, AppContext } from 'src/app/models/app-context.model';
+import { AppContextService } from 'src/app/services/app-context.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -9,13 +9,11 @@ import { SocialloginService } from 'src/app/services/social-login.service';
 })
 export class NavMenuComponent implements OnInit {
   isExpanded = false;
-
-  user: SocialUser;
+  appUser: User;
   loggedIn: boolean;
-
+  appContext: AppContext;
   constructor(
-    private authService: SocialAuthService,
-    private loginservice: SocialloginService
+    private appContextService: AppContextService
   ) {
   }
   collapse() {
@@ -27,26 +25,18 @@ export class NavMenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      this.loggedIn = (user != null);
-      this.user = user
-      this.loginservice.loggedIn = (user != null);
-      this.loginservice.user = user;
 
-      if ( this.loggedIn ) {
-        /// Add somegthing here
-      }
-
-    });
-
+    this.appContextService.appContext$.subscribe(context => {
+      this.appContext = context;
+    })
 
   }
 
   Login(): void {
-    this.loginservice.Login();
+    this.appContextService.ShowLogin.next(true);
   }
 
   logout(): void {
-    this.authService.signOut();
+    this.appContextService.signOut();
   }
 }

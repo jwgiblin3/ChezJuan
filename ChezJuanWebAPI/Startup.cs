@@ -30,6 +30,7 @@ namespace ChezJuanWebAPI
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddSingleton<ISqlServerConnectionProvider, SqlServerConnectionProvider>();
             services.AddSingleton<IRecipeRepo, RecipeRepo>();
+            services.AddSingleton<IUserRepo, UserRepo>();
             services.Configure<ConnectionConfig>(Configuration.GetSection("ConnectionStrings"));
         }
 

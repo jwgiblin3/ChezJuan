@@ -83,6 +83,9 @@ export class AppContextService implements OnDestroy {
         }
     }
 
+    setShowLogin( status: boolean){
+        this.ShowLogin.next(status);
+    }
     signOut(): void {
         this.authService.signOut();
         this.cookieService.delete('userId');

@@ -44,8 +44,8 @@
               <div ngbDropdown class="d-inline-block">
                 <img ngbDropdownToggle width="40" Hwight="40" src="/assets/images/icons/user3.jpg">
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button ngbDropdownItem [hidden]="!appContext.isLoggedIn"><div><img src="{{ appContext.user?.imageUrl }}" alt="User Photo"
-                      width="20" Hwight="20"></div>{{ appContext.user?.name }}</button>
+                  <button ngbDropdownItem [hidden]="!appContext.isLoggedIn"><div><img src="{{ appContext.user?.imageUrl }}" alt="User Photo" style="border-radius: 50%;"
+                      width="60" Hwight="60"></div>{{ appContext.user?.name }}</button>
                   <button ngbDropdownItem [hidden]="appContext.isLoggedIn" (click)="Login()"><img [hidden]="appContext.isLoggedIn"
                       src="/assets/images/icons/logout.png" width="20" Hwight="20"> Login</button>
                   <button ngbDropdownItem [hidden]="!appContext.isLoggedIn"(click)="logout()"><img src="/assets/images/icons/logout.png" width="20"

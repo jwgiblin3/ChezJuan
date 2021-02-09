@@ -9,6 +9,6 @@ namespace ChezJuanWebAPI.Models
     {
         public int RecipeId { get; set; }
         public int Rating { get; set; }
-        public string User { get; set; }
+        public string Email { get; set; }
     }
 }

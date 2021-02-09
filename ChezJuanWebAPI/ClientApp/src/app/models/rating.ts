@@ -1,5 +1,5 @@
 export class Rating {
     recipeId: number;
-    user: string;
+    email: string;
     rating: number;
 }

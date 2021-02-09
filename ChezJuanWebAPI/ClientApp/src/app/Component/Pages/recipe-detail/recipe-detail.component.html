@@ -3,7 +3,7 @@
 <!-- Subheader End -->
 
 <!-- Recipe Start -->
-<div class="section section-padding single-post-1">
+<div class="section section-padding single-post-1" *ngIf="dataIsLoaded | async">
   <div class="container">
 
     <div class="row">
@@ -30,7 +30,11 @@
             <a *ngFor="let tag of recipe.tags" routerLink="/recipe-detail">{{tag}}</a>
           </div>
           <h2 class="title">{{recipe.title}}</h2>
-          <ngb-rating [(rate)]="recipe.rating"  [max]="5" (rateChange)="submitRate($event)" [readonly]="!appContext.isLoggedIn" data-toggle="tooltip" data-placement="bottom" title="Login to rate"></ngb-rating> ({{recipe.ratingCount}})
+          <ngb-rating [(rate)]="recipe.rating"  [max]="5" (rateChange)="submitRate($event)" [readonly]="!appContext.isLoggedIn" data-toggle="tooltip" data-placement="bottom" title="Average Rating: {{recipe.rating}} out of {{recipe.ratingCount}}"></ngb-rating> ({{recipe.ratingCount}})
+          <div class="form-text small">
+            <div [hidden]="!hasBeenRated" class="text-success">Thanks!</div>
+            <div [hidden]="hasBeenRated" class="text-danger">Please this recipe</div>
+          </div>
           <div class="post-meta">
             <!--<ul class="list-inline list-inline-xxs offset-top-15">
               <li><span class="icon icon-xs mdi mdi-star text-primary text-middle"></span></li>
@@ -86,10 +90,9 @@
                   [(ngModel)]="comment"></textarea>
               </div>
             </div>
-            <app-login>
-              <button type="button" class="btn-custom primary" name="button" (click)="addComment()">Post
-                comment</button>
-            </app-login>
+            <button [hidden]="!appContext.isLoggedIn" type="button" class="btn-custom primary" name="button" (click)="addComment()">Post comment</button>
+            <div [hidden]="appContext.isLoggedIn">You must <a (click)="signIn()" class="btn btn-primary" role="button" style="font-weight: bold; color: white">signin</a> in order to comment.</div>
+            
           </form>
         </div>
         <!-- Comments End -->
@@ -99,14 +102,3 @@
 
   </div>
 </div>
-<!-- Recipe End -->
-<script>
-  $(document).ready(function () {
-    $('.popup-youtube').magnificPopup({
-
-     
-      delegate: 'a',
-      type: 'video'
-    }).console.log("Tes");;
-  });  
-</script>

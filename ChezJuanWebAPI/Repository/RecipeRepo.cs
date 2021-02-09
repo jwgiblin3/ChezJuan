@@ -149,12 +149,12 @@ namespace ChezJuanWebAPI
 
             using (var connection = sqlProvider.GetDbConnection())
             {
-                var results = connection.QueryMultipleAsync("Recipe_SaveRate",
+                var results = connection.QueryMultipleAsync("RecipeRating_Save",
                     new
                     {
                         @RecipeId = content.RecipeId,
                         @Rating = content.Rating,
-                        @User = content.User
+                        @Email = content.Email
 
                     }, commandTimeout: 60,
                     commandType: CommandType.StoredProcedure).Result;

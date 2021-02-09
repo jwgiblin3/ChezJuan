@@ -1,4 +1,5 @@
 
+import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
@@ -55,8 +56,10 @@ import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recip
     SubHeaderComponent,
     DifficultyComponent,
 
+
   ],
   imports: [
+    ReactiveFormsModule,
     NgbModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,

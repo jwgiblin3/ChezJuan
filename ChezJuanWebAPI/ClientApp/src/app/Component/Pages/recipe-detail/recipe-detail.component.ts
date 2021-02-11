@@ -97,6 +97,10 @@ export class RecipeDetailComponent implements OnInit {
 
     this.dataservice.saveRecipeRating(content).subscribe(res => {
       this.hasBeenRated = true;
+      const newRating  = (this.recipe.ratingCount * this.recipe.rating + content.rating)/(this.recipe.ratingCount + 1)
+      this.recipe.ratingCount++;
+      this.recipe.rating = newRating;
+
       if ( this.unsavedRating) {
         this.unsavedRating = null;
       }

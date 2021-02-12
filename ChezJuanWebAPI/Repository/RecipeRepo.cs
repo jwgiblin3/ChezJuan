@@ -19,7 +19,7 @@ namespace ChezJuanWebAPI
         Task<IEnumerable<Comments>> GetComments(int recipeId);
 
         Task SaveComments(Comments content);
-        Task SaveRating(Ratings content);
+        Task<decimal> SaveRating(Ratings content);
     }
 
     public class RecipeRepo: IRecipeRepo
@@ -144,24 +144,29 @@ namespace ChezJuanWebAPI
             return Task.CompletedTask;
         }
 
-        public Task SaveRating(Ratings content)
+        public async Task<decimal> SaveRating(Ratings content)
         {
+            decimal rating;
 
             using (var connection = sqlProvider.GetDbConnection())
             {
-                var results = connection.QueryMultipleAsync("RecipeRating_Save",
-                    new
-                    {
-                        @RecipeId = content.RecipeId,
-                        @Rating = content.Rating,
-                        @Email = content.Email
 
-                    }, commandTimeout: 60,
+                var p = new DynamicParameters();
+                p.Add("@RecipeId", content.RecipeId);
+                p.Add("@Rating", content.Rating);
+                p.Add("@Email",content.Email);
+                p.Add("@RatingOut", dbType: DbType.Decimal, direction: ParameterDirection.Output);
+
+
+                var results =  connection.QueryAsync<decimal>("RecipeRating_Save",
+                    p, commandTimeout: 60,
                     commandType: CommandType.StoredProcedure).Result;
+
+                rating =  p.Get<decimal>("@RatingOut");
 
             }
 
-            return Task.CompletedTask;
+            return  rating;
         }
     }
 

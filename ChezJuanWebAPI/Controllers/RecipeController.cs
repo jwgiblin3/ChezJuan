@@ -75,8 +75,8 @@ namespace ChezJuanWebAPI.Controllers
         [Route("SaveRating")]
         public async Task<IActionResult> SaveRating([FromBody] Ratings comment)
         {
-            await recipeRepo.SaveRating(comment);
-            return Ok("Saved");
+            var results = await recipeRepo.SaveRating(comment);
+            return Ok(results);
         }
 
         #region "User"

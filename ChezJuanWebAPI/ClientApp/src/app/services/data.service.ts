@@ -60,9 +60,9 @@ export class DataService implements OnInit, OnDestroy {
         return this.http.post(url, comment, this.httpOptions);
     }
     
-    saveRecipeRating(content: Rating): Observable<any> {
+    saveRecipeRating(content: Rating): Observable<number> {
         const url = this.apiPath + 'SaveRating'; 
-        return this.http.post(url, content, this.httpOptions);
+        return this.http.post<number>(url, content, this.httpOptions);
     }
 
     getCatogies(): Observable<RecipeCategory[]> {

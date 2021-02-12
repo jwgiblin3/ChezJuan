@@ -2,7 +2,7 @@ export class RecipeDetail {
     title: string;
     description: string;
     //images: string[];
-    image: string;
+    image: number;
     time: string;
     serves: number;
     rating: number;

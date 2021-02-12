@@ -33,6 +33,7 @@ import { LoginComponent } from './Component/Layouts/login/login.component';
 import { CommentsComponent } from './Component/Layouts/comments/comments.component';
 import { SubHeaderComponent } from './Component/Layouts/sub-header/sub-header.component';
 import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recipe-difficulty.component';
+import { MinutesToHours } from './pipes/minutes-hours';
 
 
 @NgModule({
@@ -55,7 +56,7 @@ import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recip
     CommentsComponent,
     SubHeaderComponent,
     DifficultyComponent,
-
+    MinutesToHours,
 
   ],
   imports: [
@@ -69,7 +70,7 @@ import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recip
       { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'contactus', component: ContactusComponent, data: { image: 'mimi.jpg', section: 'Contact Us' } },
       { path: 'recommendations', component: RecommendationsComponent, data: { image: 'eh.jpg', section: 'Recommendations' } },
-      { path: 'recipes', component: RecipeListComponent, data: { image: 'beef.jpg', section: 'Recipes' } },
+      { path: 'recipes/:categories  ', component: RecipeListComponent, data: { image: 'beef.jpg', section: 'Recipes' } },
       { path: 'recipe/:id', component: RecipeDetailComponent, data: { image: 'eh.jpg', section: 'Recipes' } },
 
     ], { relativeLinkResolution: 'legacy' })

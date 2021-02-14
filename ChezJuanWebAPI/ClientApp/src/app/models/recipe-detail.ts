@@ -39,5 +39,6 @@ export class RecipeListItem {
     rating: number;
     ratingCount: number;
     steps:number
+    categories: string[];
     
 }

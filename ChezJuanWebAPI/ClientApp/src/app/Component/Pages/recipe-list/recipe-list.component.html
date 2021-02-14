@@ -1,23 +1,43 @@
 <!-- Subheader Start -->
-<app-sub-header ></app-sub-header>
+<app-sub-header></app-sub-header>
 <!-- Subheader End -->
 
 <!-- Recipes Start -->
 <section class="section">
   <div class="container">
     <div class="row">
-      <!--<mat-form-field appearance="fill">
-        <mat-label>Toppings</mat-label>
-        <mat-select [formControl]="toppings" multiple>
-          <mat-option *ngFor="let topping of difficulty" [value]="topping">{{topping}}</mat-option>
-        </mat-select>
-      </mat-form-field>-->
+      <div>
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select multiple [(ngModel)]="selectedCategories" (selectionChange)="selectionChanged($event)">
+            <mat-option *ngFor="let element of cats" [value]="element.optionValue">{{element.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        &nbsp;
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Difficulty</mat-label>
+          <mat-select multiple [(ngModel)]="selectedDiff" (selectionChange)="selectionChanged($event)">
+            <mat-option *ngFor="let element of difficulties" [value]="element.optionValue">{{element.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        &nbsp;
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Time</mat-label>
+          <mat-select multiple [(ngModel)]="selectedTime" (selectionChange)="selectionChanged($event)">
+            <mat-option *ngFor="let element of times" [value]="element.optionValue">{{element.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
 
     <div class="row">
       <!-- Recipes Start -->
       <div class="col-lg-8">
-        <app-recipe-card [recipe]="recipe" *ngFor="let recipe of recipes; let i = index"></app-recipe-card>
+        <app-recipe-card [recipe]="recipe" *ngFor="let recipe of recipesfiltered; let i = index"></app-recipe-card>
 
         <!-- Pagination Start -->
         <!--<ul class="pagination">

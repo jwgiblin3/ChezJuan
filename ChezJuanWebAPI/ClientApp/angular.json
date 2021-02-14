@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/assets/css/plugins/bootstrap.min.css",
               "src/assets/css/plugins/animate.min.css",
               "src/assets/css/plugins/magnific-popup.css",
@@ -102,7 +103,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": ["src/styles.css"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "src/styles.css"],
             "scripts": [],
             "assets": ["src/assets"]
           }

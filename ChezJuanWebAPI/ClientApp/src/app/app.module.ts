@@ -1,10 +1,15 @@
 
+import { NgModule } from '@angular/core';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -34,6 +39,8 @@ import { CommentsComponent } from './Component/Layouts/comments/comments.compone
 import { SubHeaderComponent } from './Component/Layouts/sub-header/sub-header.component';
 import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recipe-difficulty.component';
 import { MinutesToHours } from './pipes/minutes-hours';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RemoveSpaces } from './pipes/remove-spaces';
 
 
 @NgModule({
@@ -57,9 +64,12 @@ import { MinutesToHours } from './pipes/minutes-hours';
     SubHeaderComponent,
     DifficultyComponent,
     MinutesToHours,
-
+    RemoveSpaces,
   ],
   imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     ReactiveFormsModule,
     NgbModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -70,15 +80,16 @@ import { MinutesToHours } from './pipes/minutes-hours';
       { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'contactus', component: ContactusComponent, data: { image: 'mimi.jpg', section: 'Contact Us' } },
       { path: 'recommendations', component: RecommendationsComponent, data: { image: 'eh.jpg', section: 'Recommendations' } },
-      { path: 'recipes/:categories  ', component: RecipeListComponent, data: { image: 'beef.jpg', section: 'Recipes' } },
+      { path: 'recipes', component: RecipeListComponent, data: { image: 'beef.jpg', section: 'Recipes' } },
       { path: 'recipe/:id', component: RecipeDetailComponent, data: { image: 'eh.jpg', section: 'Recipes' } },
 
-    ], { relativeLinkResolution: 'legacy' })
+    ], { relativeLinkResolution: 'legacy' }),
+    BrowserAnimationsModule
   ],
   providers: [
     CookieService,
     {
-      
+
       provide: 'SocialAuthServiceConfig',
       useValue: {
         autoLogin: false,

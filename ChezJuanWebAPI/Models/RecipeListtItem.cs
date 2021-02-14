@@ -12,9 +12,17 @@ namespace ChezJuanWebAPI.Models
         public string Description { get; set; }
         public string Image { get; set; }
         public string Time { get; set; }
+        public string[] Categories { get; set; }
         public int Difficulty { get; set; }
         public int Rating { get; set; }
         public int RatingCount { get; set; }
         public int Steps { get; set; }
     }
+
+    public class RecipeCategories
+    {
+        public int RecipeId  { get; set; }
+        public string Category { get; set; }
+    }
+
 }

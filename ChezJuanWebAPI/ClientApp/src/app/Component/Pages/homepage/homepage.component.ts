@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { RecipeCategory } from 'src/app/models/recpe-category';
+import { RecipeCategory } from 'src/app/models/recipe-category';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({

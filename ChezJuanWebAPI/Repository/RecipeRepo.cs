@@ -83,7 +83,11 @@ namespace ChezJuanWebAPI
                     commandType: CommandType.StoredProcedure).Result;
 
                 content = await results.ReadAsync<RecipeListtItem>();
-
+                var cats = await results.ReadAsync<RecipeCategories>();
+                foreach(RecipeListtItem r in content)
+                {
+                    r.Categories = cats.Where(w => w.RecipeId == r.Id).Select(s => s.Category).ToArray();
+                }
 
             }
 

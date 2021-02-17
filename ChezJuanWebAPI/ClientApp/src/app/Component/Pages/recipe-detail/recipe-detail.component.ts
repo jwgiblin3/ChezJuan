@@ -9,6 +9,7 @@ import { Rating } from 'src/app/models/rating';
 import { AppContextService } from 'src/app/services/app-context.service';
 import { AppContext, User as AppUser } from 'src/app/models/app-context.model';
 
+// import { ClickEvent } from "angular-star-rating/src/interfaces";
 
 //import * as data from '../../../../assets/data/recipes.json';
 declare var $: any;
@@ -43,7 +44,7 @@ export class RecipeDetailComponent implements OnInit {
     this.dataservice.getRecipe(this.recipeId).subscribe(result => {
       this.recipe = result;
       this.dataIsLoaded = Promise.resolve(true);
-      console.log(this.recipe);
+      //console.log(this.recipe);
     }, error => console.error(error));
 
     this.appContextService.appContext$.subscribe((appContext) => {

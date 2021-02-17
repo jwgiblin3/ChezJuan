@@ -21,7 +21,7 @@ export class RecipeListComponent implements OnInit {
   recipes: RecipeListItem[];
   recipesfiltered: RecipeListItem[];
   search =  new FormControl();
-  difficulties: OptionValues[] =  [{ name: 'Ameteur', optionValue: 1}, { name: 'Home Chef', optionValue: 1},  { name: 'Chef', optionValue: 1}];
+  difficulties: OptionValues[] =  [{ name: 'Ameteur', optionValue: 1}, { name: 'Home Chef', optionValue: 2},  { name: 'Chef', optionValue: 3}];
   times: OptionValues[] =  [{ name: 'Less 30 minutes', optionValue: '0_30'},{ name: '30-60 minutes', optionValue: '30_60'},{ name: '60 or More', optionValue: '60_999'}];
   cats: OptionValues[] = [];
   categories: RecipeCategory[];
@@ -72,7 +72,7 @@ export class RecipeListComponent implements OnInit {
    // this.selected = this.cats.filter( x=> x.optionValue ===this.category)[0];
     //this.selectedCategories.push(selected);
     this.selectedCategories.push(this.category);//= this.category;//.push(this.selected.optionValue);
-
+    this.filter();
   }
 
   selectionChanged(event:any) : void {
@@ -83,12 +83,12 @@ export class RecipeListComponent implements OnInit {
 
   filter() {
     this.recipesfiltered = this.recipes;
-    if ( this.selectedCategories ) {
+    if ( this.selectedCategories && this.selectedCategories.length > 0 ) {
       this.recipesfiltered = this.recipesfiltered.filter( f=> f.categories.some(r=> this.selectedCategories.includes(r)));
       // es6const found = arr1.some(r=> arr2.indexOf(r) >= 0)
     }
 
-    if( this.selectedDiff) {
+    if( this.selectedDiff && this.selectedDiff.length > 0 ) {
       this.recipesfiltered = this.recipesfiltered.filter( f=> this.selectedDiff.includes(f.difficulty));
     }
 

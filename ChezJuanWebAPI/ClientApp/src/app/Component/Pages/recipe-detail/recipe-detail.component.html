@@ -30,7 +30,9 @@
             <a *ngFor="let tag of recipe.tags" routerLink="/recipe-detail">{{tag}}</a>
           </div>
           <h2 class="title">{{recipe.title}}</h2>
-          <ngb-rating [rate]="recipe.rating"  [max]="5" (rateChange)="submitRate($event)" [readonly]="!appContext.isLoggedIn"></ngb-rating>{{recipe.rating | number : '1.0-2'}}&nbsp;({{recipe.ratingCount}})
+          
+          
+          <ngb-rating [rate]="recipe.rating"  [max]="5" (rateChange)="submitRate($event)" [readonly]="!appContext.isLoggedIn"></ngb-rating>&nbsp;{{recipe.rating | number : '1.0-2'}} out of ({{recipe.ratingCount}})
           <div class="form-text small">
             <div [hidden]="!hasBeenRated" class="text-success">Thanks!</div>
             <div [hidden]="hasBeenRated" class="text-danger">Please this recipe</div>

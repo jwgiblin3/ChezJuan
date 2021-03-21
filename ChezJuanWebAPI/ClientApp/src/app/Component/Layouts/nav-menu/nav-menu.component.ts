@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User, AppContext } from 'src/app/models/app-context.model';
-import { AppContextService } from 'src/app/services/app-context.service';
+import { AppContextService } from 'src/app/services/app-context.service';\
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-nav-menu',

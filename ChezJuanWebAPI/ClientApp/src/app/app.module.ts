@@ -1,9 +1,10 @@
-
 import { NgModule } from '@angular/core';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
@@ -41,14 +42,15 @@ import { DifficultyComponent } from './Component/Layouts/recipe-difficulty/recip
 import { MinutesToHours } from './pipes/minutes-hours';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RemoveSpaces } from './pipes/remove-spaces';
-
+import { MaterialModule } from './material.module';
+// import { BestOfComponent } from './Component/Pages/best-of/bestof.component';
+// import { BestOfCardComponent } from './Component/Layouts/bestof-card/bestof-card.component';
+// import { BestofDetailComponent } from './Component/Pages/bestof-detail/bestof-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
-    NavMenuComponent,
     PreloaderComponent,
     FooterComponent,
     HomepageComponent,
@@ -58,6 +60,9 @@ import { RemoveSpaces } from './pipes/remove-spaces';
     RecommendationsComponent,
     ProdRecComponent,
     RecipeListComponent,
+  //  BestOfComponent,
+  // BestOfCardComponent,
+  //  BestofDetailComponent,
     RecipeCardComponent,
     PreloaderComponent,
     LoginComponent,
@@ -66,11 +71,17 @@ import { RemoveSpaces } from './pipes/remove-spaces';
     DifficultyComponent,
     MinutesToHours,
     RemoveSpaces,
+    
   ],
   imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
+    //MaterialModule,
+    MatIconModule,
+    //NavMenuComponent,
+    
+    //MatFormFieldModule,
+    //MatInputModule,
+    //MatSelectModule,
+    
     ReactiveFormsModule,
     NgbModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -80,6 +91,9 @@ import { RemoveSpaces } from './pipes/remove-spaces';
     RouterModule.forRoot([
       { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'contactus', component: ContactusComponent, data: { image: 'mimi.jpg', section: 'Contact Us' } },
+      { path: 'bestof', loadChildren: () => import('./Component/Pages/bestof/bestof.module').then(m=>m.BestOfModule)},
+//      { path: 'bestof', component: BestOfComponent, data: { image: 'mimi.jpg', section: 'Best of Bergen!' } },
+//      { path: 'bestof-detail/:id', component: BestofDetailComponent, data: { image: 'mimi.jpg', section: 'Best of Bergen!' } },
       { path: 'recommendations', component: RecommendationsComponent, data: { image: 'eh.jpg', section: 'Recommendations' } },
       { path: 'recipes', component: RecipeListComponent, data: { image: 'beef.jpg', section: 'Recipes' } },
       { path: 'recipe/:id', component: RecipeDetailComponent, data: { image: 'eh.jpg', section: 'Recipes' } },
@@ -87,7 +101,11 @@ import { RemoveSpaces } from './pipes/remove-spaces';
     ], { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule
   ],
+  exports: [
+  // NavMenuComponent,
+  ],
   providers: [
+    MaterialModule,
     CookieService,
     {
 

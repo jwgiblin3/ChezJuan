@@ -97,5 +97,24 @@ namespace ChezJuanWebAPI.Controllers
   
             return Ok(results);
         }
+
+        [HttpGet]
+        [Route("getAllBestOf")]
+        public async Task<IActionResult> getAllBestOf()
+        {
+            var results = await recipeRepo.GetBestOfCategories();
+
+            return Ok(results);
+        }
+
+        [HttpGet]
+        [Route("getBestOfDetail")]
+        public async Task<IActionResult> getBestOfDetail(int categoryId)
+        {
+            var results = await recipeRepo.GetBestOfDetail(categoryId);
+
+            return Ok(results);
+        }
+
     }
 }

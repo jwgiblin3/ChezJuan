@@ -9,6 +9,7 @@ import { Rating } from '../models/rating';
 import { RecipeCategory } from '../models/recipe-category';
 import { User } from '../models/app-context.model';
 import { RecipeListItem } from 'src/app/models/recipe-detail';
+import { BestOf, BestOfItem } from '../models/bestof-item';
 
 
 @Injectable({
@@ -85,5 +86,11 @@ export class DataService implements OnInit, OnDestroy {
         return this.http.get<User>(this.apiPath + 'GetUser/' + id);
     }
 
+    getAllBestOf(): Observable<BestOfItem[]> {
+        return this.http.get<BestOfItem[]>(this.apiPath + 'getAllBestOf');
+    }
 
+    getBestOf(id: number): Observable<BestOf> {
+        return this.http.get<BestOf>(this.apiPath + 'getBestOfDetail');
+    }
 }

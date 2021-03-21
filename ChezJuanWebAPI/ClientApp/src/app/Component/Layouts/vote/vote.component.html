@@ -1,0 +1,11 @@
+<div>
+  <i title="Up Votes" (click)="vote(1)" ng-class="{'up', currentVote.vote === 1, ''}">
+    <mat-icon ng-class="{'up', currentVote.vote === 1, ''}">arrow_drop_up</mat-icon>
+  </i>
+  <br>
+  {{currentVote.voteCount}}
+  <br>
+  <i title="Down Votes"(click)="vote(-1)" ng-class="{'down', currentVote.vote === -1, ''}">
+    <mat-icon ng-class="{'down', currentVote.vote === -1, ''}">arrow_drop_up</mat-icon>
+  </i>
+</div>

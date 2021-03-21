@@ -20,6 +20,9 @@ namespace ChezJuanWebAPI
 
         Task SaveComments(Comments content);
         Task<decimal> SaveRating(Ratings content);
+        Task<BestOf> GetBestOfDetail(int categoryId);
+        Task<IEnumerable<BestOfItem>> GetBestOfCategories();
+
     }
 
     public class RecipeRepo: IRecipeRepo
@@ -171,6 +174,45 @@ namespace ChezJuanWebAPI
             }
 
             return  rating;
+        }
+
+
+        public async Task<IEnumerable<BestOfItem>> GetBestOfCategories()
+        {
+            IEnumerable<BestOfItem> contentList;
+            using (var connection = sqlProvider.GetDbConnection())
+            {
+                var results = connection.QueryMultipleAsync("Categories_GetByType",
+                    new
+                    {
+                        @TypeId = 3
+                    }, commandTimeout: 60,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                contentList = await results.ReadAsync<BestOfItem>();
+
+            }
+
+            return contentList;
+        }
+
+        public async Task<BestOf> GetBestOfDetail(int categoryId)
+        {
+            BestOf content = new BestOf(); ;
+            using (var connection = sqlProvider.GetDbConnection())
+            {
+                var results = connection.QueryMultipleAsync("BestOf_GetDetail",
+                    new
+                    {
+                        @CategoryId = categoryId
+                    }, commandTimeout: 60,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                content.Item = await results.ReadFirstAsync<BestOfItem>();
+                content.Places = await results.ReadAsync<BestofDetail>();
+            }
+
+            return content;
         }
     }
 

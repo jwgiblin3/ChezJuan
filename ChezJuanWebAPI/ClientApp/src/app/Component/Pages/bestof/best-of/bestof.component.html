@@ -1,0 +1,16 @@
+<!-- Subheader Start
+<app-sub-header></app-sub-header> -->
+<!-- Subheader End -->
+
+<!-- Recipes Start -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <!-- Recipes Start -->
+      <div class="col-lg-8">
+        <app-bestof-card [item]="best" *ngFor="let best of bestOf; let i = index"></app-bestof-card>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Recipes End -->

@@ -7,6 +7,9 @@
       <li class="menu-item menu-item-has-children">
         <a routerLink="recipes">Recipes</a>
       </li>
+      <li class="menu-item menu-item-has-children">
+        <a routerLink="bestof">Best Of Bergen</a>
+      </li>
       <li class="menu-item">
         <a routerLink="/recommendations">Recommendations</a>
       </li>
@@ -30,6 +33,9 @@
           <a routerLink="recipes">Recipes</a>
         </li>
         <li class="menu-item">
+          <a routerLink="/bestof">Best Of Bergen</a>
+        </li>
+        <li class="menu-item">
           <a routerLink="/recommendations">Recommendations</a>
         </li>
         <li class="menu-item">
@@ -42,14 +48,13 @@
           <li>
             <div class="col">
               <div ngbDropdown class="d-inline-block">
-                <img ngbDropdownToggle width="40" Hwight="40" src="/assets/images/icons/user3.jpg">
+                <!--<mat-icon ngbDropdownToggle style="transform: scale(2);">account_circle</mat-icon>-->
+                <img  width="40" Hwight="40" src="/assets/images/icons/user3.jpg">
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                   <button ngbDropdownItem [hidden]="!appContext.isLoggedIn"><div><img src="{{ appContext.user?.imageUrl }}" alt="User Photo" style="border-radius: 50%;"
                       width="60" Hwight="60"></div>{{ appContext.user?.name }}</button>
-                  <button ngbDropdownItem [hidden]="appContext.isLoggedIn" (click)="Login()"><img [hidden]="appContext.isLoggedIn"
-                      src="/assets/images/icons/logout.png" width="20" Hwight="20"> Login</button>
-                  <button ngbDropdownItem [hidden]="!appContext.isLoggedIn"(click)="logout()"><img src="/assets/images/icons/logout.png" width="20"
-                      Hwight="20"> Logout</button>
+                  <button ngbDropdownItem [hidden]="appContext.isLoggedIn" (click)="Login()"><mat-icon>logout</mat-icon>Login</button>
+                  <button ngbDropdownItem [hidden]="!appContext.isLoggedIn"(click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
                 </div>
               </div>
             </div>

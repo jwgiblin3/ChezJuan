@@ -1,7 +1,7 @@
 <div class="recipe recipe-list">
   <div class="recipe-thumbnail">
     <a routerLink="/recipe-detail">
-      <img src="assets/images/recipes/{{recipe.image}}" alt="Recipe" routerLink="/recipe" [queryParams]="{recipeId: recipe.id}" >
+      <img src="assets/images/recipes/{{recipe.image}}" alt="Recipe" [routerLink]="['/recipe', recipe.id]"  >
     </a>
   </div>
   <div class="recipe-body">

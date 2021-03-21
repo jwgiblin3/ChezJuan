@@ -1,0 +1,50 @@
+<!-- Subheader Start -->
+<app-sub-header></app-sub-header>
+<!-- Subheader End -->
+
+<!-- Recipe Start -->
+<div class="section section-padding single-post-1" *ngIf="dataIsLoaded | async">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-8">
+
+        <!-- Content Start -->
+        <h2 class="title">{{recipe.title}}</h2>
+        <article class="post-single">
+          <div class="post-thumbnail">
+            <img src="/assets/images/bestof/{{recipe?.image}}" alt="{{recipe.title}}">
+          </div>
+
+
+        </article>
+        <!-- Content End -->
+
+        <!-- Comments Start -->
+        <!--<div class="comments-list">
+          <h4>{{comments.length}} Comments</h4>
+          <ul>
+            <app-comment *ngFor="let comment of comments; let i = index;" [comment]="comment"></app-comment>
+          </ul>
+        </div>
+        <div class="comment-form">
+          <h4>Leave a Reply</h4>
+          <form method="post">
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <textarea class="form-control" placeholder="Type your comment..." name="comment" rows="7"
+                  [(ngModel)]="comment"></textarea>
+              </div>
+            </div>
+            <button [hidden]="!appContext.isLoggedIn" type="button" class="btn-custom primary" name="button" (click)="addComment()">Post comment</button>
+            <div [hidden]="appContext.isLoggedIn">You must <a (click)="signIn()" class="btn btn-primary" role="button" style="font-weight: bold; color: white">signin</a> in order to comment.</div>
+            
+          </form>
+        </div> -->
+        <!-- Comments End -->
+
+      </div>
+    </div>
+
+  </div>
+</div>

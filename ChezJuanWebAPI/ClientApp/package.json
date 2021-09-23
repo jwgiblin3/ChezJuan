@@ -26,7 +26,6 @@
     "@material-ui/core": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
-    "@nguniversal/module-map-ngfactory-loader": "8.1.1",
     "angularx-social-login": "^3.5.4",
     "aspnet-prerendering": "^3.0.1",
     "bootstrap": "^4.3.1",

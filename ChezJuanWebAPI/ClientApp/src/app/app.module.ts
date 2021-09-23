@@ -60,6 +60,7 @@ import { MaterialModule } from './material.module';
     RecommendationsComponent,
     ProdRecComponent,
     RecipeListComponent,
+    NavMenuComponent,
   //  BestOfComponent,
   // BestOfCardComponent,
   //  BestofDetailComponent,
@@ -76,6 +77,7 @@ import { MaterialModule } from './material.module';
   imports: [
     //MaterialModule,
     MatIconModule,
+    MatFormFieldModule,
     //NavMenuComponent,
     
     //MatFormFieldModule,
@@ -91,7 +93,7 @@ import { MaterialModule } from './material.module';
     RouterModule.forRoot([
       { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'contactus', component: ContactusComponent, data: { image: 'mimi.jpg', section: 'Contact Us' } },
-      { path: 'bestof', loadChildren: () => import('./Component/Pages/bestof/bestof.module').then(m=>m.BestOfModule)},
+//      { path: 'bestof', loadChildren: () => import('./Component/Pages/bestof/bestof.module').then(m=>m.BestOfModule)},
 //      { path: 'bestof', component: BestOfComponent, data: { image: 'mimi.jpg', section: 'Best of Bergen!' } },
 //      { path: 'bestof-detail/:id', component: BestofDetailComponent, data: { image: 'mimi.jpg', section: 'Best of Bergen!' } },
       { path: 'recommendations', component: RecommendationsComponent, data: { image: 'eh.jpg', section: 'Recommendations' } },
